@@ -2,7 +2,8 @@ package model;
 
 public class Client extends User{
 
-    public Client (String name, CPF CPF){
-        super(name, CPF);
+    public Client (String name, CPF cpf){
+        super(name, cpf);
     }
+
 }

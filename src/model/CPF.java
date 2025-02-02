@@ -1,16 +1,18 @@
 package model;
 
-import exception.CPFException;
+import exception.CpfException;
+
+import java.util.Objects;
 
 public class CPF {
     final private String CPF;
 
     public CPF(String cpf) {
         if (!cpf.matches("\\d{11}")) {
-            throw new CPFException("The CPF must consist of a non-constant sequence of 11 digits.");
+            throw new CpfException("The CPF must consist of a non-constant sequence of 11 digits.");
         }
         if (!isValidCPF(cpf)){
-            throw new CPFException("Invalid CPF");
+            throw new CpfException("Invalid CPF");
         }
         this.CPF = cpf;
     }
@@ -18,7 +20,7 @@ public class CPF {
     private static boolean isValidCPF(String cpf){
 
         if (cpf.length() != 11 || cpf.matches("(\\d)\\1{10}")){
-            throw new CPFException("The CPF must have 11 digits that cannot be a constant sequence.");
+            throw new CpfException("The CPF must have 11 digits that cannot be a constant sequence.");
         }
 
         int firstDigitSum = 0;
@@ -42,6 +44,22 @@ public class CPF {
         char secondCheckDigit = cpf.charAt(10);
 
         return firstDigit == Character.getNumericValue(firstCheckDigit) && secondDigit == Character.getNumericValue(secondCheckDigit);
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        CPF cpf = (CPF) o;
+        return Objects.equals(CPF, cpf.CPF);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(CPF);
     }
 
     @Override

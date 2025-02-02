@@ -1,15 +1,14 @@
 package enums;
 
-public enum Availability {
+public enum RentalType {
 
-    AVAILABLE("Available"),
-    UNAVAILABLE("Unavailable"),
-    MAINTENANCE("Maintenance"),
-    RESERVED("Reserved");
+    MONTHLY("Monthly"),
+    DAILY("Daily"),
+    WEEKLY("Weekly");
 
     private final String description;
 
-    Availability(String description) {
+    RentalType(String description){
         this.description = description;
     }
 
